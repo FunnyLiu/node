@@ -232,7 +232,40 @@
 
 
 
-## 逐个文件分析
+## 知识点
+
+### 整理流程
+
+nodejs模块可以分为下面三类：
+
+* 核心模块(native模块)：包含在 Node.js 源码中，被编译进 Node.js 可执行二进制文件 JavaScript 模块，其实也就是lib和deps目录下的js文件，比如常用的http,fs等等
+
+* 内建模块(built-in模块)：一般我们不直接调用，而是在 native 模块中调用，然后我们再require
+
+* 第三方模块：非 Node.js 源码自带的模块都可以统称第三方模块，比如 express，webpack 等等。
+
+  - JavaScript 模块，这是最常见的，我们开发的时候一般都写的是 JavaScript 模块
+
+  - JSON 模块，这个很简单，就是一个 JSON 文件
+
+  - C/C++ 扩展模块，使用 C/C++ 编写，编译之后后缀名为 .node
+
+
+
+比如lib目录下的fs.js就是native模块，而fs.js调用的src目录下的node_fs.cc就是内建模块。
+
+
+js如何和c++联通？
+
+<img src="https://raw.githubusercontent.com/brizer/graph-bed/master/img/20200727111557.png"/>
+
+nodejs启动的时候调用binding::RegisterBuiltinModules()，把所有内建模块都加载到modlist_internal。
+
+参考：
+
+[nodejs是如何和libuv以及v8一起合作的？(文末有彩蛋哦) - 掘金](https://juejin.im/post/5dd0b1fff265da0bae519ed4)
+
+
 
 ### lib/internal/modules/cjs/loader.js
 
