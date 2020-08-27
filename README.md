@@ -93,7 +93,7 @@
 |  |  ├── freeze_intrinsics.js
 |  |  ├── fs
 |  |  |  ├── dir.js
-|  |  |  ├── promises.js
+|  |  |  ├── promises.js - fs.promises的具体实现，将fs模块统一promisify化
 |  |  |  ├── read_file_context.js
 |  |  |  ├── rimraf.js
 |  |  |  ├── streams.js
