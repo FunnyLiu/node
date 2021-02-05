@@ -287,3 +287,17 @@ const wrapper = [
   '\n});'
 ];
 ```
+
+
+### Module.extensions 
+
+号称node版本的类webpack loader
+
+源码：[笔记内容](https://github.com/FunnyLiu/node/blob/readsource/lib/internal/modules/cjs/loader.js#L1240)
+
+可以看到加载js、json、node文件时其实是通过这里扩展的函数来完成的。
+
+也就是说只要扩展这个，就可以实现各种不同类型文件的加载了，而ts-node[参考此处](https://github.com/FunnyLiu/ts-node/blob/readsource/src/index.ts#L1078)也正是这么做的。
+
+
+
